@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="CSS-F/ai.css">
+</head>
+<body>
+  <button class="top-exit-btn" onclick="goBack()">❌</button>
+
+  <h2>Resume Builder</h2>
+
+  <form id="resumeForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="phone" placeholder="Phone" required>
+
+    <div id="educationFields">
+      <input type="text" placeholder="Education" class="education-input" required>
+    </div>
+    <button type="button" onclick="addEducation()">+ Add More Education</button>
+
+    <input type="text" id="skills" placeholder="Skills (comma separated)" required>
+    <input type="text" id="experience" placeholder="Experience" required>
+    <input type="text" id="project" placeholder="Project link (optional)">
+    <input type="file" id="photo" accept="image/*">
+
+    <label for="theme">Choose Resume Theme:</label>
+    <select id="theme">
+      <option value="modern">Modern</option>
+      <option value="classic">Classic</option>
+    </select>
+
+    <button type="submit">Generate Resume</button>
+  </form>
+
+  <div id="resumeOutput" style="display:none; position: relative;">
+    <button class="close-btn" onclick="closeResume()">❌</button>
+    <h2>Generated Resume</h2>
+    <div id="resumeContent" class=""></div>
+    <button onclick="downloadPDF()">Download as PDF</button>
+    <button onclick="printResume()">🖨️ Print Resume</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="ai.js"></script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+
+/* Layout */
+.layout {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    background: linear-gradient(135deg, #1c3b57, #25506e, #306d8f);
+    padding: 20px;
+}
+
+/* Sidebar */
+.main {
+    background: linear-gradient(135deg, #153250, #204d6d);
+    width: 275px;
+    min-height: 550px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.main:hover {
+    background: linear-gradient(135deg, #102a49, #1a3f5f);
+}
+
+.main div {
+    background-color: white;
+    border: 2px solid black;
+    padding: 15px;
+    font-size: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: 500;
+}
+
+.main div:hover {
+    box-shadow: 0 0 15px #ffcc00;
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+/* Content Area */
+.content {
+    background-color: white;
+    min-height: 550px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #1d1d1d;
+    border-radius: 20px;
+    overflow: auto;
+    padding: 20px;
+}
+
+.inner {
+    background: linear-gradient(135deg, #1f476b, #306d8f);
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 12px;
+    max-width: 90%;
+    text-align: center;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.inner img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 4px;
+    animation: anim1 5s ease-in-out infinite alternate;
+    transition: all 0.5s ease-in-out;
+}
+
+@keyframes anim1 {
+    from {
+        box-shadow: 0 0 10px #ffd700;
+    }
+    to {
+        box-shadow: 0 0 10px white;
+    }
+}
+
+#subHeading {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    background-color: #0b1f3a;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer #AboutUs,
+footer #Contact {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+footer h2 {
+    margin-bottom: 10px;
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Styled Sections: Resume, Outfit, etc */
+.M1 {
+    background-color: #102a49;
+    padding: 5px;
+    margin: 50px;
+    border-radius: 12px;
+}
+
+.resume,
+.Outfit,
+.comm,
+.Question,
+.live {
+    background: linear-gradient(135deg, #2b6597, #3d85ac, #275e8f);
+    height: auto;
+    width: 700px;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 20px auto;
+    color: white;/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 25px;
+    background-color: #12355b; /* lighter than #0b1f3a */
+    color: white;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+    cursor: pointer;
+    position: relative;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background-color: #284e76;
+    border: 2px solid #000;
+    border-radius: 5px;
+    width: 150px;
+    z-index: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo:hover .dropdown {
+    display: block;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+.dropdown a:hover {
+    background-color: #406187;
+}
+
+.nav-right a {
+    margin-left: 40px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-right a:hover {
+    color: #f5b301;
+}
+
+/* Layout */
+.layout {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    background: linear-gradient(135deg, #2c5475, #3d6b8d, #4c85a6);
+    padding: 20px;
+}
+
+/* Sidebar */
+.main {
+    background: linear-gradient(135deg, #2b5b7c, #3a7ca5);
+    width: 275px;
+    min-height: 550px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.main:hover {
+    background: linear-gradient(135deg, #2d6a8e, #408bb2);
+}
+
+.main div {
+    background-color: white;
+    border: 2px solid black;
+    padding: 15px;
+    font-size: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: 500;
+}
+
+.main div:hover {
+    box-shadow: 0 0 15px #ffcc00;
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+/* Content Area */
+.content {
+    background-color: #f8f8f8;
+    min-height: 550px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #1d1d1d;
+    border-radius: 20px;
+    overflow: auto;
+    padding: 20px;
+}
+
+.inner {
+    background: linear-gradient(135deg, #417da5, #5b9fc4);
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 12px;
+    max-width: 90%;
+    text-align: center;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.inner img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 4px;
+    animation: anim1 5s ease-in-out infinite alternate;
+    transition: all 0.5s ease-in-out;
+}
+
+@keyframes anim1 {
+    from {
+        box-shadow: 0 0 10px #ffd700;
+    }
+    to {
+        box-shadow: 0 0 10px white;
+    }
+}
+
+#subHeading {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    background-color: #12355b; /* lighter than before */
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer #AboutUs,
+footer #Contact {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+footer h2 {
+    margin-bottom: 10px;
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Styled Sections: Resume, Outfit, etc */
+.M1 {
+    background-color: #2b5477;
+    padding: 5px;
+    margin: 50px;
+    border-radius: 12px;
+}
+
+.resume,
+.Outfit,
+.comm,
+.Question,
+.live {
+    background: linear-gradient(135deg, #5d9fc3, #7cb4d1, #9bcde3);
+    height: auto;
+    width: 700px;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 20px auto;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.resume h1,
+.Outfit h1,
+.comm h1,
+.Question h1,
+.live h1 {
+    color: #f5b301;
+}
+
+.M1 p {
+    color: white;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.resume img,
+.comm img,
+.live img,
+.Outfit img,
+.Question img {
+    height: 220px;
+    width: 330px;
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 8px;
+    animation: anim1 5s ease-in-out 0s infinite normal;
+    transition: all 1s ease-in-out 0s;
+}
+
+.live button,
+.comm button,
+.Outfit button,
+.Question button,
+.resume button {
+    height: 40px;
+    width: 130px;
+    border: 1px solid rgb(250, 249, 249);
+    border-radius: 18px;
+    font-size: 15px;
+    background-color: #f5b301;
+    cursor: pointer;
+    color: #0b1f3a;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.live button:hover,
+.comm button:hover,
+.Outfit button:hover,
+.Question button:hover,
+.resume button:hover {
+    background-color: #68520f;
+    color: #fffdfd;
+    box-shadow: 2px 4px 8px white;
+    font-size: 16px;
+}
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.resume h1,
+.Outfit h1,
+.comm h1,
+.Question h1,
+.live h1 {
+    color: #f5b301;
+}
+
+.M1 p {
+    color: white;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.resume img,
+.comm img,
+.live img,
+.Outfit img,
+.Question img {
+    height: 220px;
+    width: 330px;
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 8px;
+    animation: anim1 5s ease-in-out 0s infinite normal;
+    transition: all 1s ease-in-out 0s;
+}
+
+.live button,
+.comm button,
+.Outfit button,
+.Question button,
+.resume button {
+    height: 40px;
+    width: 130px;
+    border: 1px solid rgb(250, 249, 249);
+    border-radius: 18px;
+    font-size: 15px;
+    background-color: #f5b301;
+    cursor: pointer;
+    color: #0b1f3a;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.live button:hover,
+.comm button:hover,
+.Outfit button:hover,
+.Question button:hover,
+.resume button:hover {
+    background-color: #68520f;
+    color: #fffdfd;
+    box-shadow: 2px 4px 8px white;
+    font-size: 16px;
+}

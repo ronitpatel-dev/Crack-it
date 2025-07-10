@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Class</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* ❌ Cross button style */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      left: 1005px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #999;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .close-btn:hover {
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="Home.Html" onclick="location.reload()" 
+    class="close-btn" title="Close">✖</a>
+    <h2>📚 Join Our Live Class</h2>
+    <iframe
+      allow="camera; microphone; fullscreen; display-capture"
+      src="https://meet.jit.si/letslearn">
+    </iframe>
+  </div>
+</body>
+</html>

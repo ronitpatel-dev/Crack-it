@@ -1,0 +1,227 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 25px;
+    background-color: #0b1f3a;
+    color: white;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid white;
+
+}
+
+.logo {
+    cursor: pointer;
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background-color: #867676;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 150px;
+    z-index: 1;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: rgb(249, 248, 250);
+    text-decoration: none;
+}
+
+.dropdown a:hover {
+    background-color: #b8adad;
+    color: black;
+}
+.nav-right a {
+    margin-left: 40px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-right a:hover {
+    color: #f5b301;
+}
+
+/* Layout */
+.layout {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    background: linear-gradient(135deg, #1c3b57, #25506e, #306d8f);
+    padding: 20px;
+}
+
+/* Sidebar */
+.main {
+    background: linear-gradient(135deg, #153250, #204d6d);
+    width: 275px;
+    min-height: 550px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.main:hover {
+    background: linear-gradient(135deg, #102a49, #1a3f5f);
+}
+
+.main div {
+    background-color: white;
+    border: 2px solid black;
+    padding: 15px;
+    font-size: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: 500;
+}
+
+.main div:hover {
+    box-shadow: 0 0 15px #ffcc00;
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+/* Content Area */
+.content {
+    background-color: white;
+    min-height: 550px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #1d1d1d;
+    border-radius: 20px;
+    overflow: auto;
+    padding: 20px;
+}
+
+.inner {
+    background: linear-gradient(135deg, #1f476b, #306d8f);
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 12px;
+    max-width: 90%;
+    text-align: center;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.inner img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 4px;
+    animation: anim1 5s ease-in-out infinite alternate;
+    transition: all 0.5s ease-in-out;
+}
+
+@keyframes anim1 {
+    from {
+        box-shadow: 0 0 10px #ffd700;
+    }
+    to {
+        box-shadow: 0 0 10px white;
+    }
+}
+
+#subHeading {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    background-color: #0b1f3a;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer #AboutUs,
+footer #Contact {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+footer h2 {
+    margin-bottom: 10px;
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+/*====================*/
+
+#h33 {
+    position: relative;
+    bottom: 200px;
+    left: 110px;
+}
+
+#Dbutton {
+    color: black;
+    background-color: #cda6f8;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+#Dbutton:hover {
+    background-color: #200125;
+    color: white;
+}
+
+#C-head {
+    text-align: center;
+    font-size: larger;
+    padding: 5px;
+}
+
+.notes-list button {
+    background-color: rgb(61, 78, 224);
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 8px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.notes-list button:hover {
+    background: linear-gradient(45deg, rgb(66, 129, 247), 
+    rgb(63, 66, 243), rgb(2, 67, 248), rgb(13, 1, 58));
+}
+
+iframe {
+    width: 750px;
+    height: 500px;
+}
+

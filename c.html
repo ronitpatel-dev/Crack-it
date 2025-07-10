@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Communication - Crack It</title>
+  <link href="CSS-F/style.css" rel="stylesheet">
+  <link href="CSS-F/Main.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6ff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .main-container {
+      display: flex;
+      flex: 1;
+    }
+
+    .tabs {
+      display: flex;
+      flex-direction: column;
+      background-color: #001f3f;
+      padding: 20px;
+      min-width: 200px;
+    }
+
+    .tab {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .tab:hover {
+      background-color: #0056b3;
+    }
+
+    .section {
+      display: none;
+      padding: 20px;
+      flex: 1;
+      background: white;
+      border-radius: 8px;
+      margin: 20px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 14px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    iframe, audio, img {
+      margin-top: 15px;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<header>
+  <div class="logo" id="logo">
+    🔰
+    <div class="dropdown" id="dropdownMenu">
+      <a href="index.html" onclick="alert('Sucessfully Logout !')">Logout</a>
+      <a href="form.html">Querry</a>
+      <a href="#" onclick="alert('provide soon')">Internship</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="Home.html">Home</a>
+    <a href="#AboutUs">About Us</a>
+    <a href="#Contact">Contact</a>
+  </div>
+</header>
+
+<body>
+  <div class="main-container">
+    <div class="tabs">
+      <div class="tab" onclick="showTab('verbal')">Verbal</div>
+      <div class="tab" onclick="showTab('nonverbal')">Non-Verbal</div>
+      <div class="tab" onclick="showTab('written')">Written</div>
+      <div class="tab" onclick="showTab('listening')">Listening</div>
+      <div class="tab" onclick="showTab('digital')">Digital</div>
+    </div>
+
+    <div id="verbal" class="section active">
+      <h2>🎤 Verbal Communication</h2>
+      <p>Record your answer to "Tell me about yourself":</p>
+      <button onclick="startRecording()">Start Recording</button>
+      <button onclick="stopRecording()">Stop Recording</button>
+      <audio id="audioPlayback" controls></audio>
+      <h4>Checklist</h4>
+      <input type="checkbox"> I speak clearly.<br>
+      <input type="checkbox"> I avoid filler words.<br>
+    </div>
+
+    <div id="nonverbal" class="section">
+      <h2>🧍 Non-Verbal Communication</h2>
+      <p>Tips on eye contact, posture, and gestures.</p>
+      <img src="https://i.imgur.com/sKcKkqE.png" alt="Non-verbal tips">
+      <iframe src="https://www.youtube.com/embed/VMGbUfUur28" allowfullscreen></iframe>
+    </div>
+
+    <div id="written" class="section">
+      <h2>📝 Written Communication</h2>
+      <p>Download templates:</p>
+      <a href="pdfs/resume-template.pdf" download><button>📄 Resume</button></a>
+      <a href="pdfs/email-template.pdf" download><button>📧 Email</button></a>
+      <a href="pdfs/thank-you-note.pdf" download><button>🙏 Thank You</button></a>
+    </div>
+
+    <div id="listening" class="section">
+      <h2>👂 Listening Skills</h2>
+      <p>Listen and answer:</p>
+      <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" controls></audio>
+      <p><strong>Q:</strong> What did the speaker talk about?</p>
+      <button onclick="alert('Correct! ✅')">Music and instruments</button>
+      <button onclick="alert('Try again ❌')">Political speech</button>
+    </div>
+
+    <div id="digital" class="section">
+      <h2>🌐 Digital Etiquette</h2>
+      <p>Tips for video calls and chats:</p>
+      <ul>
+        <li>✅ Dress professionally</li>
+        <li>✅ Use formal language</li>
+        <li>✅ Stable internet & quiet room</li>
+      </ul>
+      <img src="https://i.imgur.com/DYk2Mwa.png" alt="Digital Tips">
+    </div>
+  </div>
+
+  <footer>
+    <div id="AboutUs">
+      <h2>🌟 About Us – Crack It</h2><br><br>
+      Welcome to Crack It – Your Interview Success Partner!<br><br>
+      At Crack It, we believe every opportunity begins with confidence. Whether you're a fresher stepping into the corporate world or a professional aiming for your dream job, we’re here to help you crack it!<br><br>
+      Our platform is dedicated to interview preparation – made simple, smart, and practical. We guide you through:<br>
+      Effective communication skills<br>
+      Professional dressing and grooming (attire tips)<br>
+      Common and tricky interview questions<br>
+      Building a standout resume<br><br>
+      With real-world advice, proven techniques, and tailored resources, we aim to boost your confidence and help you leave a lasting impression in every interview room you enter.<br><br>
+      Because it's not just about the answers – it's about how you present them.<br>
+      Let’s crack it together!<br><br><br>
+    </div>
+    <div id="Contact">
+      <h2> 📞 Contact Us</h2><br><br>
+      Got questions, feedback, or need personal guidance? We’d love to hear from you!<br><br>
+      📧 Email: support@crackit.com<br>
+      📱 Phone: +91-98765-43210<br>
+      🌐 Website: www.crackit.com<br><br>
+    </div>
+  </footer>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    let recorder;
+    let chunks = [];
+
+    async function startRecording() {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      recorder = new MediaRecorder(stream);
+      recorder.ondataavailable = e => chunks.push(e.data);
+      recorder.onstop = () => {
+        const blob = new Blob(chunks, { type: 'audio/webm' });
+        document.getElementById('audioPlayback').src = URL.createObjectURL(blob);
+        chunks = [];
+      };
+      recorder.start();
+    }
+
+    function stopRecording() {
+      recorder.stop();
+    }
+  </script>
+</body>
+
+</html>
