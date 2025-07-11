@@ -1,22 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        img{
-            height: 500px;
-            border: 1px solid black;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Professional Dress Guide</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: #004d40;
+    }
+
+    .section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .Dress {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .Dress:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .Dress img {
+      height: 590px;
+      width: 100%;
+      object-fit: cover;
+      border: 4px solid #00796b;
+      border-radius: 15px;
+    }
+
+    .Dress h2 {
+      margin: 15px 0 5px;
+      color: #00796b;
+    }
+
+    .Dress p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .Dress img {
+        height: auto;
+      }
+
+      .section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="Dress">
-        <Div id="man">
-            <img src="Images/Men.png" alt="Men">
-        </Div>
+  <!-- Men's Dress -->
+  <div class="section">
+    <div class="Dress" id="man">
+      <img src="Images/Men.png" alt="Men Interview Outfit">
+      <h2>Men's Outfit</h2>
+      <p>Dress professionally with a suit or formal shirt and trousers. Ensure shoes are clean and polished.</p>
     </div>
-    
+  </div>
+  <!-- Women's Dress -->
+  <div class="section">
+    <div class="Dress" id="woman">
+      <img src="Images/women.png" alt="Women Interview Outfit">
+      <h2>Women's Outfit</h2>
+      <p>Wear a formal suit, saree, or kurti with trousers. Keep accessories minimal and professional.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="Dress" id="vedio">
+      <h1>Vedio</h1>
+  </div>
+
+
 </body>
 </html>
