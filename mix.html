@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Content</title>
-    <link href="mix.css" rel="stylesheet">
+    <link href="CSS-F/mix.css" rel="stylesheet">
 </head>
 
 <body>
@@ -37,10 +37,28 @@
     </div>
 
     <div class="live">
-        <img src="https://via.placeholder.com/150" alt="Live">
         <h1>Live Sessions</h1>
         <p>Join our upcoming live mock interview sessions with mentors.</p>
-        <a href="live.html"> <button type="button"> Start</button></a>
+        
+        <!-- Password to edit: letss@101 -->
+        <input type="password" id="pass-Msc" required><br>
+        <table id="schedule-table">
+            <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Link</th>
+            </tr>
+            <tr>
+                <td id="td1">--</td>
+                <td id="td2">--</td>
+                <td id="td3">--</td>
+                <td id="td4">--</td>
+            </tr>
+        </table><br>
+        <!-- Meet password input (also locked initially) -->
+        <input type="text" id="Enroll-Pass" placeholder="Meet password" readonly><br><br>
+        <button type="submit" id="LiveBtn"> <a href="live.html" target="blank"> Join</a></button>
     </div>
 </body>
 

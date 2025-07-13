@@ -2,164 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Crack It - Communication Skills</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #eef1f7;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #1a1a40;
-    }
-    .feature {
-      background: white;
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 800px;
-    }
-    textarea {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      resize: vertical;
-    }
-    button {
-      background: #1a1a40;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #333366;
-    }
-    #recordedText, #aiResult {
-      margin-top: 10px;
-      background: #f9f9f9;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    a {
-      display: block;
-      color: #1a1a40;
-      margin: 5px 0;
-      text-decoration: none;
-    }
-  </style>
+  <title>Crack It – Voice & AI Analyzer</title>
+  <link href="CSS-F/com.css" rel="stylesheet>">
 </head>
 <body>
 
-<h1>🧠 Crack It – Communication Skills Hub</h1>
+  <div class="feature">
+    <h2>🎙️ Voice to Text (Speech Transcription)</h2>
+    <button class="actionBtn" onclick="startRecording()">🎤 Start Recording</button>
+    <div id="recordingStatus" class="result"></div>
+    <textarea id="recordedText" rows="6" placeholder="Transcribed text will appear here..."></textarea>
+  </div>
 
-<!-- 🗣️ Verbal Communication Practice -->
-<div class="feature">
-  <h2>1. 🎤 Verbal Communication Practice</h2>
-  <p>Record your response to practice speaking clearly:</p>
-  <button onclick="startRecording()">Start Recording</button>
-  <button onclick="stopRecording()">Stop</button>
-  <div id="recordedText">Transcript will appear here...</div>
-</div>
+  <div class="feature">
+    <h2>🧠 AI Interview Answer Analyzer</h2>
+    <textarea id="answerInput" rows="6" placeholder="Paste your interview answer here..."></textarea>
+    <button class="actionBtn" onclick="analyzeWithAI()">Analyze with AI</button>
+    <div id="aiResult" class="result"></div>
+  </div>
 
-<!-- 📄 Written Templates -->
-<div class="feature">
-  <h2>2. 📝 Written Communication Templates</h2>
-  <p>Download professional templates:</p>
-  <a href="https://example.com/resume-template.pdf" target="_blank">📎 Resume Email Template</a>
-  <a href="https://example.com/cover-letter.pdf" target="_blank">📎 Cover Letter Sample</a>
-  <a href="https://example.com/thank-you-email.pdf" target="_blank">📎 Thank You Email</a>
-  <a href="https://example.com/linkedin-message.pdf" target="_blank">📎 LinkedIn Message Template</a>
-</div>
+  <div class="feature">
+    <h2>📝 Written Notes (Download as PDF)</h2>
+    <textarea id="notesInput" rows="6" placeholder="Write your notes here..."></textarea>
+    <button class="actionBtn" onclick="downloadNotesAsPDF()">⬇️ Download as PDF</button>
+  </div>
 
-<!-- 🧠 AI Interview Answer Analyzer -->
-<div class="feature">
-  <h2>3. 🧠 AI Interview Answer Analyzer</h2>
-  <p>Paste your interview answer below:</p>
-  <textarea id="answerInput" rows="8" placeholder="Paste your interview answer here..."></textarea><br>
-  <button onclick="analyzeWithOpenRouter()">Analyze with AI</button>
-  <div id="aiResult"></div>
-</div>
+  <div class="feature">
+    <h2>📂 Download Pre-made Notes (from PDF folder)</h2>
+    <p><strong>View or download your notes:</strong></p>
+    <a class="open-link" href="pdf/notes1.pdf" target="_self">📘 Open Notes 1</a>
+    <a class="download-link" href="pdf/notes1.pdf" download>⬇️ Download</a><br>
 
-<script>
-  // 🎤 Speech Recognition
-  let recognition;
-  function startRecording() {
-    if (!('webkitSpeechRecognition' in window)) {
-      alert("Speech Recognition not supported in this browser.");
-      return;
-    }
-    recognition = new webkitSpeechRecognition();
-    recognition.lang = 'en-US';
-    recognition.onresult = function(event) {
-      const text = event.results[0][0].transcript;
-      document.getElementById('recordedText').innerText = "You said: " + text;
-    };
-    recognition.onerror = function() {
-      document.getElementById('recordedText').innerText = "Error or mic permission denied.";
-    };
-    recognition.start();
-  }
-  function stopRecording() {
-    if (recognition) recognition.stop();
-  }
+    <a class="open-link" href="pdf/notes1%20(1).pdf" target="_self">📘 Open Notes 1 (1)</a>
+    <a class="download-link" href="pdf/notes1%20(1).pdf" download>⬇️ Download</a>
+  </div>
 
-  // 🧠 AI Analyzer using OpenRouter
-  async function analyzeWithOpenRouter() {
-    const answer = document.getElementById("answerInput").value.trim();
-    const resultDiv = document.getElementById("aiResult");
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    function startRecording() {
+      const statusDiv = document.getElementById("recordingStatus");
+      const output = document.getElementById("recordedText");
+      statusDiv.innerHTML = "🎙️ Listening...";
 
-    if (!answer) {
-      resultDiv.innerHTML = "⚠️ Please enter your answer.";
-      return;
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        output.value = transcript;
+        statusDiv.innerHTML = "✅ Transcription completed.";
+      };
+
+      recognition.onerror = function(event) {
+        statusDiv.innerHTML = "❌ Error during recording: " + event.error;
+      };
+
+      recognition.onspeechend = function() {
+        recognition.stop();
+        statusDiv.innerHTML += "<br>🔁 You may record again.";
+      };
     }
 
-    resultDiv.innerHTML = "⏳ Analyzing... please wait.";
+    async function analyzeWithAI() {
+      const input = document.getElementById("answerInput").value.trim();
+      const resultDiv = document.getElementById("aiResult");
+      resultDiv.innerHTML = "⏳ Processing...";
 
-    const apiKey = "Bearer YOUR_API_KEY_HERE"; // Replace with your OpenRouter API key
+      const response = await fetch("comm.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answer: `Evaluate this interview answer:\n"${input}"\n\nGive:\n1. Score out of 10\n2. Strengths\n3. Areas to improve\n4. Tone and clarity\nKeep it short and professional.` })
+      });
 
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": apiKey,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "mistralai/mixtral-8x7b",
-        messages: [
-          {
-            role: "user",
-            content: `
-Evaluate this interview answer:
-"${answer}"
-
-Give:
-1. Score out of 10
-2. Strengths
-3. Areas to improve
-4. Tone and clarity
-Keep it short and professional.`
-          }
-        ]
-      })
-    });
-
-    const data = await response.json();
-
-    if (data.choices && data.choices.length > 0) {
-      resultDiv.innerHTML = `<strong>✅ AI Feedback:</strong><br><br>${data.choices[0].message.content.replace(/\n/g, "<br>")}`;
-    } else {
-      resultDiv.innerHTML = "❌ AI did not return any feedback.";
+      const data = await response.json();
+      if (data.choices && data.choices.length > 0) {
+        resultDiv.innerHTML = `<strong>✅ AI Response:</strong><br><br>${data.choices[0].message.content.replace(/\n/g, "<br>")}`;
+      } else {
+        resultDiv.innerHTML = "❌ AI did not return any feedback.";
+      }
     }
-  }
-</script>
 
+    function downloadNotesAsPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const notes = document.getElementById("notesInput").value;
+      const lines = doc.splitTextToSize(notes, 180);
+      doc.text(lines, 10, 10);
+      doc.save("My_Notes.pdf");
+    }
+  </script>
 </body>
 </html>

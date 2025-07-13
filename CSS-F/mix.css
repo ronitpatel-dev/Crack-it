@@ -408,9 +408,9 @@ footer h2 {
 .Outfit button:hover,
 .Question button:hover,
 .resume button:hover {
-    background-color: #68520f;
-    color: #fffdfd;
+    background: linear-gradient(145deg, rgb(96, 181, 218), rgb(14, 0, 14));
     box-shadow: 2px 4px 8px white;
+    color: #fffdfd;
     font-size: 16px;
 }
 
@@ -471,4 +471,79 @@ footer h2 {
     color: #fffdfd;
     box-shadow: 2px 4px 8px white;
     font-size: 16px;
+}
+
+.live input {
+    width: 50%;
+    padding: 10px 12px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border: 1px solid #070707;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.live input[type="text"]:focus {
+    border-color: #5c8af4;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(70, 130, 180, 0.2);
+}
+/*
+#LiveBtn {
+    width: 25%;
+    padding: 12px;
+    background-color: rgb(4, 46, 72);
+    color: white;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}*/
+
+#LiveBtn a {
+    text-decoration: none;
+    color: white;
+}
+
+#LiveBtn:hover {
+    background: linear-gradient(145deg, rgb(96, 181, 218), rgb(14, 0, 14));
+    box-shadow: 2px 4px 8px white;
+}
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 50px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: #65c8fd;
+    color: rgb(15, 15, 15);
+}
+
+td {
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+td:focus {
+    background-color: #e6f0ff;
+    outline: 2px solid #a3c7f3;
+}
+
+#inner-Content-1{
+    margin-top: 100px;
+    width: auto;
 }

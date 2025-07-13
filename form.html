@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Page</title>
+  <link href="CSS-F/form.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Replace YOUR_FORM_ID below with your actual Formspree ID -->
+
+  <form action="https://formspree.io/f/mblykdqd " method="POST">
+    <span><a href="home.html">❌</a></span>
+    <fieldset>
+      <input type="text" name="name" placeholder="Enter your name" required><br><br>
+
+      <input type="email" name="email" placeholder="Enter Your Email" required><br><br>
+
+      <input type="number" name="number" placeholder="Enter Your Mob. Number" required><br><br>
+
+      <textarea name="reason" placeholder="Why is Query ?" required></textarea><br><br>
+
+      <input type="text" name="_gotcha" style="display:none">
+
+      <button type="submit" onclick="alert('Sucessfully Submited')"><a href="home.html"> Submit</a></button>
+    </fieldset>
+  </form>
+</body>
+
+</html>

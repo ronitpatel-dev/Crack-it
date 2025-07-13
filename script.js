@@ -49,3 +49,36 @@ document.getElementById("box5").addEventListener("click", (e) => {
     e.preventDefault(); // Prevent page reload if any <a> inside
     loadInner("live");
 });
+
+//==================================================
+
+        function loadLiveClass() {
+            fetch('home.html')
+                .then(res => res.text())
+                .then(data => {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = data;
+                    const liveContent = temp.querySelector('.live');
+                    document.getElementById('content').innerHTML = liveContent
+                        ? liveContent.outerHTML
+                        : 'Live class content not found!';
+
+                    const editPassInput = document.getElementById("pass-Msc");
+                    const enrollInput = document.getElementById("Enroll-Pass");
+                    const tableCells = document.querySelectorAll("#schedule-table td");
+
+                    tableCells.forEach(cell => cell.setAttribute("contenteditable", "false"));
+                    enrollInput.setAttribute("readonly", true);
+
+                    editPassInput.addEventListener("input", function () {
+                        const password = editPassInput.value.trim();
+                        if (password === "letss@101") {
+                            tableCells.forEach(cell => cell.setAttribute("contenteditable", "true"));
+                            enrollInput.removeAttribute("readonly");
+                        } else {
+                            tableCells.forEach(cell => cell.setAttribute("contenteditable", "false"));
+                            enrollInput.setAttribute("readonly", true);
+                        }
+                    });
+                });
+        }

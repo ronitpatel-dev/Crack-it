@@ -1,0 +1,47 @@
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    .feature {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin: auto;
+      margin-top: 40px;
+      width: 70%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+    }
+    .actionBtn {
+      background: #1a1a40;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 10px;
+      background: #f9f9f9;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .download-link, .open-link {
+      display: inline-block;
+      margin-top: 10px;
+      margin-right: 10px;
+      text-decoration: none;
+      color: white;
+      background-color: #1a1a40;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
