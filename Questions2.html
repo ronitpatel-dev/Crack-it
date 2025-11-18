@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interview Question Types | Crack It</title>
+  <link rel="stylesheet" href="CSS/question.css" />
+  <style>
+    /* Close button styling */
+    #closePdfBtn {
+      display: block;
+      margin-bottom: 10px;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #pdfViewer iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <span id="logo1">Crack-It</span>
+      <ul>
+        <li><a href="main.html">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Main viewer div -->
+    <div class="main-11" id="pdfViewer">
+      <button id="closePdfBtn" style="display:none;">✖ Close PDF</button>
+      <p>Select a question PDF to view it here 👇</p>
+    </div>
+
+    <!-- Sections for PDFs -->
+    <section id="intro" class="card">
+      <h2>Introductory / Icebreaker Questions</h2>
+      <div class="pdf-row">
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/intro1.pdf')">View</button>
+          <a href="pdfs/intro1.pdf" download>Download</a>
+        </div>
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/intro2.pdf')">View</button>
+          <a href="pdfs/intro2.pdf" download>Download</a>
+        </div>
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/intro3.pdf')">View</button>
+          <a href="pdfs/intro3.pdf" download>Download</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tech" class="card">
+      <h2>Technical Questions</h2>
+      <div class="pdf-row">
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/tech1.pdf')">View</button>
+          <a href="pdfs/tech1.pdf" download>Download</a>
+        </div>
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/tech2.pdf')">View</button>
+          <a href="pdfs/tech2.pdf" download>Download</a>
+        </div>
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/tech3.pdf')">View</button>
+          <a href="pdfs/tech3.pdf" download>Download</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="card">
+      <h2>Problem-Solving / Analytical Questions</h2>
+      <div class="pdf-row">
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/problem1.pdf')">View</button>
+          <a href="pdfs/problem1.pdf" download>Download</a>
+        </div>
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/problem2.pdf')">View</button>
+          <a href="pdfs/problem2.pdf" download>Download</a>
+        </div>
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/problem3.pdf')">View</button>
+          <a href="pdfs/problem3.pdf" download>Download</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="hr" class="card">
+      <h2>HR / Personality Questions</h2>
+      <div class="pdf-row">
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/hr1.pdf')">View</button>
+          <a href="pdfs/hr1.pdf" download>Download</a>
+        </div>
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/hr2.pdf')">View</button>
+          <a href="pdfs/hr2.pdf" download>Download</a>
+        </div>
+        <div class="pdf-card">
+          <button onclick="viewPDF('pdfs/hr3.pdf')">View</button>
+          <a href="pdfs/hr3.pdf" download>Download</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const viewer = document.getElementById("pdfViewer");
+    const closeBtn = document.getElementById("closePdfBtn");
+
+    // Function to view PDF
+    function viewPDF(file) {
+      // If iframe exists, just update the src
+      let iframe = viewer.querySelector('iframe');
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        viewer.appendChild(iframe);
+      }
+      iframe.src = file;
+
+      // Show the close button
+      closeBtn.style.display = 'block';
+    }
+
+    // Close button clears the PDF
+    closeBtn.addEventListener('click', () => {
+      const iframe = viewer.querySelector('iframe');
+      if (iframe) iframe.remove();
+      closeBtn.style.display = 'none';
+      viewer.innerHTML += '<p>Select a question PDF to view it here 👇</p>';
+    });
+  </script>
+</body>
+</html>

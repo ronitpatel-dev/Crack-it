@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crack It | Payment</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #a8ff78, #78ffd6);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      width: 350px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #00b894;
+      margin-bottom: 20px;
+    }
+
+    .payment-option {
+      background: #3ddc97;
+      color: white;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .payment-option:hover {
+      background: #00b894;
+      transform: scale(1.05);
+    }
+
+    .success {
+      display: none;
+      color: #00b894;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .print-btn {
+      display: none;
+      margin-top: 15px;
+      background: #78ffd6;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .print-btn:hover {
+      background: #3ddc97;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Crack It Payment</h2>
+    <button class="payment-option" onclick="makePayment('UPI')">Pay via UPI</button>
+    <button class="payment-option" onclick="makePayment('Card')">Pay via Card</button>
+    <p class="success">✅ Payment Successful!</p>
+    <button class="print-btn" onclick="window.print()">🧾 Print Receipt</button>
+  </div>
+
+  <script>
+    // Redirect if already paid
+    if (localStorage.getItem('crackit_paid') === 'true') {
+      window.location.href = 'main.html';
+    }
+
+    function makePayment(method) {
+      alert('Processing ' + method + ' Payment...');
+      setTimeout(() => {
+        document.querySelector('.success').style.display = 'block';
+        document.querySelector('.print-btn').style.display = 'inline-block';
+        localStorage.setItem('crackit_paid', 'true');
+        alert('Payment Successful! Redirecting to main page...');
+        window.location.href = 'main.html';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>

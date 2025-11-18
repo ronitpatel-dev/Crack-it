@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume1 - Crack It</title>
+  <link rel="stylesheet" href="CSS/resume.css">
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+
+  <!-- 🧾 Resume Builder -->
+  <div id="ResBuilder">
+    <h1>Resume Builder</h1>
+    <div class="resume-form">
+      <h2>Enter Your Details</h2>
+      <form id="resumeForm">
+        <label>Full Name:</label>
+        <input type="text" id="name" required>
+
+        <label>Email:</label>
+        <input type="email" id="email" required>
+
+        <label>Phone:</label>
+        <input type="text" id="phone" required>
+
+        <label>LinkedIn URL:</label>
+        <input type="url" id="linkedin">
+
+        <label>GitHub URL:</label>
+        <input type="url" id="github">
+
+        <label>Skills:</label>
+        <textarea id="skills" required></textarea>
+
+        <label>Experience:</label>
+        <textarea id="experience" required></textarea>
+
+        <label>Education:</label>
+        <textarea id="education"></textarea>
+
+        <label>Projects:</label>
+        <textarea id="projects"></textarea>
+
+        <label>Certifications:</label>
+        <textarea id="certifications"></textarea>
+
+        <button type="button" id="generateResumeBtn">Generate Resume</button>
+      </form>
+    </div>
+
+    <!-- 📄 Resume Output -->
+    <div id="resumeOutput" style="display:none;">
+      <button id="closeBtn">❌</button>
+      <h1 id="rName"></h1>
+      <p><b>Email:</b> <span id="rEmail"></span></p>
+      <p><b>Phone:</b> <span id="rPhone"></span></p>
+      <p><b>LinkedIn:</b> <span id="rLinkedin"></span></p>
+      <p><b>GitHub:</b> <span id="rGithub"></span></p>
+
+      <h3>Skills</h3><p id="rSkills"></p>
+      <h3>Experience</h3><p id="rExperience"></p>
+      <h3>Education</h3><p id="rEducation"></p>
+      <h3>Projects</h3><p id="rProjects"></p>
+      <h3>Certifications</h3><p id="rCertifications"></p>
+
+      <button id="downloadResumeBtn">Download PDF</button>
+    </div>
+  </div>
+
+  <!-- 🧩 Resume Templates -->
+  <div id="Temp">
+    <h1>Resume Templates</h1>
+    <div class="templates">
+      <div class="template-card">
+        <h3>Classic Template</h3>
+        <iframe src="Templates/classic.pdf" width="100%" height="200px"></iframe>
+        <button onclick="downloadTemplate('Templates/classic.pdf')">Download</button>
+      </div>
+      <div class="template-card">
+        <h3>Modern Template</h3>
+        <iframe src="Templates/modern.pdf" width="100%" height="200px"></iframe>
+        <button onclick="downloadTemplate('Templates/modern.pdf')">Download</button>
+      </div>
+      <div class="template-card">
+        <h3>Creative Template</h3>
+        <iframe src="Templates/creative.pdf" width="100%" height="200px"></iframe>
+        <button onclick="downloadTemplate('Templates/creative.pdf')">Download</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🤖 AI ATS Resume Checker -->
+  <div id="Ats">
+    <h1>💼 AI ATS Resume Checker</h1>
+    <div class="ats-container">
+      <label><b>Upload Your Resume (PDF):</b></label>
+      <input type="file" id="resumeFile" accept="application/pdf">
+
+      <label><b>Paste Job Description:</b></label>
+      <textarea id="jobDescription" rows="5" placeholder="Paste the job description here..."></textarea>
+
+      <button id="checkATSBtn">Check ATS Score</button>
+      <div id="atsResult" class="result" style="display:none;"></div>
+    </div>
+  </div>
+
+
+
+  <!-- JS File -->
+  <script src="JS/resume.js"></script>
+</body>
+</html>

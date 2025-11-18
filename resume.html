@@ -2,133 +2,142 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume Notes</title>
-  <link href="CSS-F/style.css" rel="stylesheet">
-  <link href="CSS-F/Main.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Crack-It</title>
+    <link rel="stylesheet" href="CSS/resume.css">
 </head>
 
 <body>
-  <header>
-    <div class="logo" id="logo">
-      🔰
-      <div class="dropdown" id="dropdownMenu">
-        <a href="index.html" onclick="alert('Successfully Logged out!')">Logout</a>
-        <a href="form.html">Query</a>
-        <a href="job.html">Internship</a>
-      </div>
+    <header>
+        <nav>
+            <span id="logo1">Crack-It</span>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="index.html">log-out</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Resume Builder Section -->
+    <div id="ResBuilder">
+        <h1>Resume Builder</h1>
+        <div class="resume-form">
+            <h2>Enter Your Details</h2>
+            <form id="resumeForm">
+                <label>Full Name:</label>
+                <input type="text" id="name" required>
+
+                <label>Email:</label>
+                <input type="email" id="email" required>
+
+                <label>Phone:</label>
+                <input type="text" id="phone" required>
+
+                <label>Skills:</label>
+                <textarea id="skills" required></textarea>
+
+                <label>Experience:</label>
+                <textarea id="experience" required></textarea>
+
+                <button type="button" onclick="generateResume()">Generate Resume</button>
+            </form>
+        </div>
+
+        <!-- Resume Output -->
+        <div id="resumeOutput" style="display:none;">
+            <button id="closeBtn" onclick="closeResume()">❌</button>
+            <h1 id="rName"></h1>
+            <p><b>Email:</b> <span id="rEmail"></span></p>
+            <p><b>Phone:</b> <span id="rPhone"></span></p>
+            <h3>Skills</h3>
+            <p id="rSkills"></p>
+            <h3>Experience</h3>
+            <p id="rExperience"></p>
+
+            <button onclick="downloadResume()">Download PDF</button>
+        </div>
     </div>
-    <div class="nav-right">
-      <a href="home.html">Home</a>
-      <a href="#AboutUs">About Us</a>
-      <a href="#Contact">Contact</a>
-    </div>
-  </header>
 
-  <div class="layout1">
-    <div class="main">
-      <h3>Resume</h3>
-      <div id="info" onclick="showInfo()">Information</div>
-      <div id="template" onclick="showNotes()">Template</div>
-      <div id="vedio" onclick="window.location.href='AIresume.html'">Resume Builder</div>
-      <div id="etc" onclick="alert('Provided soon')">ATS</div>
-    </div>
-    <div class="content">
-      <div class="inner-1" id="inner-1">
-        <p id="Inner-p">
-          A resume is your first impression in front of employers. It is a
-          professional summary of your education, skills, experience, and
-          achievements. It helps hiring managers quickly understand who you are and
-          what you bring to the table.<br><br>
-          Showcases Your Skills & Strengths – Highlights what you’re good at.<br><br>
-          Creates a Positive First Impression – A well-designed resume grabs attention.<br><br>
-          Acts as a Personal Marketing Tool – Sells your abilities to potential employers.<br><br>
-          Helps in Shortlisting – Many companies use resumes to screen candidates quickly.<br><br>
-          Organizes Your Information Clearly – Makes your journey easy to understand.<br><br>
-          Boosts Confidence in Interviews – Gives you talking points to discuss during the interview.<br><br>
-        </p>
-      </div>
-    </div>
-  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 
-  <footer>
-    <div id="AboutUs">
-      <h2>🌟 About Us – Crack It</h2><br><br>
-      Welcome to Crack It – Your Interview Success Partner!<br><br>
+    <!-- JS Functions -->
+    <script>
+        // Resume Builder
+        function generateResume() {
+            document.getElementById("rName").innerText = document.getElementById("name").value;
+            document.getElementById("rEmail").innerText = document.getElementById("email").value;
+            document.getElementById("rPhone").innerText = document.getElementById("phone").value;
+            document.getElementById("rSkills").innerText = document.getElementById("skills").value;
+            document.getElementById("rExperience").innerText = document.getElementById("experience").value;
 
-      At Crack It, we believe every opportunity begins with confidence. Whether you're a fresher stepping into the
-      corporate world or a professional aiming for your dream job, we’re here to help you crack it!<br><br>
+            document.getElementById("resumeOutput").style.display = "block";
+            document.getElementById("resumeForm").style.display = "none";
+        }
 
-      Our platform is dedicated to interview preparation – made simple, smart, and practical. We guide you
-      through:<br>
-      Effective communication skills<br>
-      Professional dressing and grooming (attire tips)<br>
-      Common and tricky interview questions<br>
-      Building a standout resume<br><br>
+        function closeResume() {
+            document.getElementById("resumeOutput").style.display = "none";
+            document.getElementById("resumeForm").style.display = "block";
+        }
 
-      With real-world advice, proven techniques, and tailored resources, we aim to boost your confidence and help
-      you leave a lasting impression in every interview room you enter.
+        function downloadResume() {
+            var element = document.getElementById("resumeOutput");
+            html2pdf().from(element).save("My_Resume.pdf");
+        }
 
-      Because it's not just about the answers – it's about how you present them.
-      Let’s crack it together!<br><br><br>
-    </div>
-    <div id="Contact">
-      <h2> 📞 Contact Us</h2><br><br>
-      Got questions, feedback, or need personal guidance? We’d love to hear from you!<br>
-      📧 Email: support@crackit.com<br>
-      📱 Phone: +91-98765-43210<br>
-      🌐 Website: www.crackit.com<br><br>
-    </div>
-  </footer>
-<script>
-  const originalContent = `
-    <p id="Inner-p">
-      A resume is your first impression in front of employers. It is a
-      professional summary of your education, skills, experience, and
-      achievements. It helps hiring managers quickly understand who you are and
-      what you bring to the table.<br><br>
-      Showcases Your Skills & Strengths – Highlights what you’re good at.<br><br>
-      Creates a Positive First Impression – A well-designed resume grabs attention.<br><br>
-      Acts as a Personal Marketing Tool – Sells your abilities to potential employers.<br><br>
-      Helps in Shortlisting – Many companies use resumes to screen candidates quickly.<br><br>
-      Organizes Your Information Clearly – Makes your journey easy to understand.<br><br>
-      Boosts Confidence in Interviews – Gives you talking points to discuss during the interview.<br><br>
-    </p>
-  `;
+        function downloadTemplate(path) {
+            const link = document.createElement('a');
+            link.href = path;
+            link.download = path.split('/').pop();
+            link.click();
+        }
 
-  function showInfo() {
-    document.querySelector(".inner-1").innerHTML = originalContent;
-  }
+        // ATS Checker - PDF Upload
+        async function checkATSfromPDF() {
+            const file = document.getElementById("resumeFile").files[0];
+            if (!file) {
+                alert("Please upload a PDF file!");
+                return;
+            }
 
-  function showNotes() {
-    document.querySelector(".inner-1").innerHTML = `
-      <h3 id="h33">Select Note</h3>
-      <div class="notes-container" style="display: flex; gap: 20px;">
-        <ul class="notes-list" style="list-style: none; padding: 0; min-width: 150px;">
-          <li><button onclick="loadPDF('notes1.pdf')">Notes 1</button></li>
-          <li><button onclick="loadPDF('notes2.pdf')">Notes 2</button></li>
-          <li><button onclick="loadPDF('notes3.pdf')">Notes 3</button></li>
-          <li><button onclick="loadPDF('notes4.pdf')">Notes 4</button></li>
-          <li><button onclick="loadPDF('notes5.pdf')">Notes 5</button></li>
-        </ul>
-        <div id="inner-Content-1" style="flex: 1;"></div>
-      </div>
-    `;
-  }
+            const fileReader = new FileReader();
+            fileReader.onload = async function () {
+                const typedarray = new Uint8Array(this.result);
+                const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                let fullText = "";
 
-  function loadPDF(fileName) {
-    document.getElementById("inner-Content-1").innerHTML = `
-      <iframe src="pdf/${fileName}" width="100%" height="400px" style="border: none;"></iframe>
-      <br><br>
-      <a href="pdf/${fileName}" download>
-        <button id="Dbutton">Download PDF</button>
-      </a>
-    `;
-  }
-</script>
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const content = await page.getTextContent();
+                    const strings = content.items.map(item => item.str);
+                    fullText += strings.join(" ") + " ";
+                }
 
-  <script src="script.js"></script>
+                fullText = fullText.toLowerCase();
+
+                const keywords = ["skills", "experience", "education", "projects", "certifications"];
+                let score = 0;
+                keywords.forEach(word => {
+                    if (fullText.includes(word)) score++;
+                });
+
+                const message = document.getElementById("atsMessage");
+                document.getElementById("atsResult").style.display = "block";
+
+                if (score === keywords.length) {
+                    message.innerText = "✅ Your resume is ATS-friendly! Good job.";
+                    message.style.color = "green";
+                } else {
+                    message.innerText = `⚠️ Your resume might not be fully ATS-friendly. Missing ${keywords.length - score} key sections.`;
+                    message.style.color = "orange";
+                }
+            };
+
+            fileReader.readAsArrayBuffer(file);
+        }
+    </script>
 </body>
 
 </html>

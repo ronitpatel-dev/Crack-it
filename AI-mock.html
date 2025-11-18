@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎙️ Crack It - AI Mock Interview</title>
+  <link rel="stylesheet" href="CSS/ai-mock.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <span id="logo1">Crack-It</span>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="main.html">Main</a></li>
+        <li><a href="index.html">Log-Out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Chat Container -->
+  <div id="chat">
+    <!-- Left Side: Questions & Answers -->
+    <div id="qa-section">
+      <h2>🤖 AI Mock Interview Practice</h2>
+
+      <!-- Input Fields -->
+      <input type="text" id="role" placeholder="Enter Job Role (e.g., Web Developer)">
+      <input type="text" id="topic" placeholder="Enter Topic (e.g., JavaScript)">
+      <button onclick="startInterview()">Start Interview</button>
+
+      <!-- Questions Display -->
+      <div id="questions"></div>
+
+      <!-- Answer Section -->
+      <h3>Your Answer:</h3>
+      <textarea id="answer" placeholder="Speak or type your answer here..."></textarea>
+
+      <!-- Voice Input -->
+      <div id="mic" onclick="startRecording()">🎙️ Start Recording</div>
+
+      <!-- Buttons -->
+      <button onclick="getFeedback()">Get Feedback</button>
+      <button id="nextBtn" onclick="nextQuestion()" style="display:none; margin-top:10px;">➡️ Next Question</button>
+    </div>
+
+    <!-- Right Side: Feedback -->
+    <div id="feedback">
+      <h3>💬 Feedback</h3>
+      <p>Your feedback will appear here...</p>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="JS/ai-mock.js"></script>
+</body>
+</html>

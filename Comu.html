@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communication | Crack It</title>
+  <link rel="stylesheet" href="CSS/demo.css">
+  <link rel="stylesheet" href="CSS/question.css">
+  <link rel="stylesheet" href="CSS/communication.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <span id="logo1">Crack-It</span>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="main.html">Main</a></li>
+        <li><a href="index.html">Log-Out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="main">
+    <div id="box1" data-section="voice">Voice to Text</div>
+    <div id="box2" data-section="grammar">Grammar & Tone Checker</div>
+    <div id="box3" data-section="ebooks">E-Books</div>
+    <div id="box4" data-section="notepad">Notepad</div>
+    <div id="box5" data-section="dictionary">Dictionary</div>
+  </div>
+
+  <div class="main-1" id="content-area-1">
+    <h2 class="title">💼 Crack It – Master Communication Skills</h2>
+    <img src="Images/imgC.jpeg" alt="Interview">
+    <p>Boost your communication skills for interviews and professional interactions.
+      Learn how to speak confidently, listen actively, and express your ideas clearly.
+      Improve your body language, tone, and clarity to make a strong first impression.
+      Master both verbal and non-verbal communication to stand out professionally.
+      Develop the ability to handle tough questions, think quickly, and respond smartly.</p>
+    <p>Enhance your communication style to build trust and leave a lasting impact.</p>
+  </div>
+
+  <script>
+    document.querySelectorAll('.main div').forEach(box => {
+      box.addEventListener('click', () => {
+        const sectionId = box.getAttribute('data-section');
+        const contentArea = document.getElementById('content-area-1');
+        contentArea.innerHTML = "<p>⏳ Loading...</p>";
+
+        fetch('communication.html')
+          .then(res => res.text())
+          .then(data => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, 'text/html');
+            const section = doc.querySelector(`#${sectionId}`);
+
+            if (section) {
+              contentArea.innerHTML = `<button id="back-btn">⬅ Back</button>${section.outerHTML}`;
+              document.getElementById('back-btn').addEventListener('click', () => location.reload());
+              attachDynamicScripts(sectionId);
+            } else {
+              contentArea.innerHTML = "<p>Section not found 😅</p>";
+            }
+          })
+          .catch(() => {
+            contentArea.innerHTML = "<p>Error loading section 🚫</p>";
+          });
+      });
+    });
+
+    function attachDynamicScripts(sectionId) {
+      if (sectionId === "voice") initVoiceToText();
+      if (sectionId === "ebooks") initBooks();
+      if (sectionId === "notepad") initNotepad();
+
+      // Grammar and Dictionary share same JS file
+      if (sectionId === "grammar" || sectionId === "dictionary") {
+        const script = document.createElement("script");
+        script.src = "JS/grammarChecker.js";
+        script.onload = () => {
+          if (sectionId === "grammar") initGrammarChecker();
+          if (sectionId === "dictionary") initDictionary();
+        };
+        document.body.appendChild(script);
+      }
+    }
+
+    // 🎤 Voice to Text
+    function initVoiceToText() {
+      const startBtn = document.getElementById('startBtn');
+      const voiceOutput = document.getElementById('voiceOutput');
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        voiceOutput.textContent = "Speech recognition not supported in your browser.";
+        return;
+      }
+      const recognition = new SpeechRecognition();
+      startBtn.onclick = () => {
+        recognition.start();
+        voiceOutput.textContent = "🎧 Listening...";
+      };
+      recognition.onresult = e => {
+        const transcript = e.results[0][0].transcript;
+        voiceOutput.textContent = "🗣️ " + transcript;
+      };
+      recognition.onerror = e => {
+        voiceOutput.textContent = "⚠️ Error: " + e.error;
+      };
+    }
+
+    // 📚 E-Books
+    function initBooks() {
+      fetchBooks("communication skills");
+      document.getElementById("searchBtn").addEventListener("click", () => {
+        const input = document.getElementById("searchInput").value.trim();
+        fetchBooks(input || "communication skills");
+      });
+    }
+
+    function fetchBooks(query) {
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${query}`;
+      const container = document.getElementById("book-list");
+      container.innerHTML = "<p>Loading books...</p>";
+
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          container.innerHTML = "";
+          if (!data.items) {
+            container.innerHTML = "<p>No books found.</p>";
+            return;
+          }
+          data.items.forEach(book => {
+            const info = book.volumeInfo;
+            const div = document.createElement("div");
+            div.className = "book";
+            div.innerHTML = `
+              <img src="${(info.imageLinks && info.imageLinks.thumbnail) || 'https://via.placeholder.com/128x180'}">
+              <h3>${info.title}</h3>
+              <p><strong>Author:</strong> ${(info.authors && info.authors.join(", ")) || "Unknown"}</p>
+              <p>${info.description ? info.description.substring(0, 80) + "..." : "No description."}</p>
+            `;
+            div.onclick = () => openModal(info.title, info.description || "No full description available.");
+            container.appendChild(div);
+          });
+        })
+        .catch(() => (container.innerHTML = "<p>Error loading books.</p>"));
+    }
+
+    function openModal(title, description) {
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalDescription").innerText = description;
+      document.getElementById("bookModal").style.display = "block";
+    }
+    function closeModal() {
+      document.getElementById("bookModal").style.display = "none";
+    }
+
+    // 📝 Notepad
+    function initNotepad() {
+      const noteArea = document.getElementById('noteArea');
+      const saveBtn = document.getElementById('saveBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const saveStatus = document.getElementById('saveStatus');
+
+      const savedNote = localStorage.getItem('userNote');
+      if (savedNote) {
+        noteArea.value = savedNote;
+        saveStatus.textContent = '✔️ Loaded your saved note!';
+      }
+
+      saveBtn.addEventListener('click', () => {
+        const note = noteArea.value.trim();
+        if (note) {
+          localStorage.setItem('userNote', note);
+          saveStatus.textContent = '✅ Note saved successfully!';
+        } else {
+          saveStatus.textContent = '⚠️ Nothing to save!';
+        }
+      });
+
+      noteArea.addEventListener('input', () => {
+        localStorage.setItem('userNote', noteArea.value);
+        saveStatus.textContent = '💾 Auto-saved...';
+      });
+
+      clearBtn.addEventListener('click', () => {
+        noteArea.value = '';
+        localStorage.removeItem('userNote');
+        saveStatus.textContent = '🧹 Note cleared!';
+      });
+    }
+  </script>
+
+
+  <script src="JS/grammarChecker.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI ATS Resume Checker</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f5f7fa;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #0073e6;
+    }
+    .ats-container {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      margin: 30px auto;
+    }
+    textarea, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      resize: none;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #005bb5;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #f0f8ff;
+    }
+    .matched {
+      color: green;
+    }
+    .missing {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>💼 AI ATS Resume Checker</h1>
+  <div class="ats-container">
+    <label><b>Upload Your Resume (PDF):</b></label>
+    <input type="file" id="resumeFile" accept="application/pdf">
+
+    <label><b>Paste Job Description:</b></label>
+    <textarea id="jobDescription" rows="5" placeholder="Paste the job description here..."></textarea>
+
+    <button id="checkATSBtn">Check ATS Score</button>
+
+    <div id="atsResult" class="result" style="display:none;"></div>
+  </div>
+
+  <script>
+    document.getElementById('checkATSBtn').addEventListener('click', async () => {
+      const file = document.getElementById("resumeFile").files[0];
+      const jobDesc = document.getElementById("jobDescription").value.trim();
+      const resultDiv = document.getElementById("atsResult");
+
+      if (!file || !jobDesc) {
+        alert("Please upload a resume and paste job description!");
+        return;
+      }
+
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = "⏳ Analyzing resume...";
+
+      const fileReader = new FileReader();
+      fileReader.onload = async function () {
+        const typedarray = new Uint8Array(this.result);
+        const pdf = await pdfjsLib.getDocument(typedarray).promise;
+        let fullText = "";
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const content = await page.getTextContent();
+          const strings = content.items.map(item => item.str);
+          fullText += strings.join(" ") + " ";
+        }
+
+        const resumeText = fullText.toLowerCase();
+        const jdText = jobDesc.toLowerCase();
+
+        const jdWords = jdText.match(/\b[a-zA-Z]+\b/g) || [];
+        const uniqueWords = [...new Set(jdWords.filter(word => word.length > 3))];
+
+        let matched = [];
+        let missing = [];
+
+        uniqueWords.forEach(word => {
+          if (resumeText.includes(word)) matched.push(word);
+          else missing.push(word);
+        });
+
+        const score = Math.round((matched.length / uniqueWords.length) * 100);
+
+        resultDiv.innerHTML = `
+          <h3>📊 ATS Score: ${score}%</h3>
+          <p><b>Matched Keywords (${matched.length}):</b> <span class="matched">${matched.join(", ") || "None"}</span></p>
+          <p><b>Missing Keywords (${missing.length}):</b> <span class="missing">${missing.join(", ") || "None"}</span></p>
+          ${score >= 80 ? "✅ Great! Your resume aligns well with the job description." : "⚠️ Try adding the missing keywords for better ATS optimization."}
+        `;
+      };
+
+      fileReader.readAsArrayBuffer(file);
+    });
+  </script>
+</body>
+</html>

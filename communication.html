@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communication Content | Crack It</title>
+  <link rel="stylesheet" href="CSS/communication.css">
+</head>
+<body>
+
+  <!-- 🎤 Voice to Text -->
+  <section id="voice">
+    <h2>🎤 Voice to Text</h2>
+    <button id="startBtn">🎙️ Start Speaking</button>
+    <p id="voiceOutput">Your speech will appear here...</p>
+  </section>
+
+  <!-- 🧠 Grammar Checker -->
+  <section id="grammar">
+    <h2>🧠 Grammar & Tone Checker</h2>
+    <p>Analyze your text for grammar errors, tone, and clarity.</p>
+    <textarea id="textInput" rows="5" cols="40" placeholder="Type your text here..."></textarea><br><br>
+    <button id="checkGrammarBtn">Check Grammar</button>
+    <div id="output"></div>
+  </section>
+
+  <!-- 📚 E-Books -->
+  <section id="ebooks">
+    <h2>📚 Communication & Soft Skills Books</h2>
+    <p>Browse books related to communication skills powered by Google Books API.</p>
+
+    <div id="controls">
+      <input type="text" id="searchInput" placeholder="Search by title or author..." />
+      <button id="searchBtn">🔍 Search</button>
+      <div id="filters">
+        <button onclick="fetchBooks('Verbal Communication')">Verbal</button>
+        <button onclick="fetchBooks('Written Communication')">Written</button>
+        <button onclick="fetchBooks('Non Verbal Communication')">Non-Verbal</button>
+        <button onclick="fetchBooks('Listening Skills')">Listening</button>
+        <button onclick="fetchBooks('Digital Communication')">Digital</button>
+        <button onclick="fetchBooks('communication skills')">All</button>
+      </div>
+    </div>
+
+    <div id="book-list" class="ebook-grid">
+      <p>Loading books...</p>
+    </div>
+
+    <div id="bookModal" class="modal">
+      <div class="modal-content">
+        <span class="closeBtn" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📝 Notepad -->
+  <section id="notepad">
+    <h2>📝 Notepad</h2>
+    <p>Write down your communication notes or feedback here. Notes are auto-saved!</p>
+    <textarea id="noteArea" rows="7" cols="50" placeholder="Start typing your notes here..."></textarea><br><br>
+    <button id="saveBtn">💾 Save Note</button>
+    <button id="clearBtn">🗑️ Clear Note</button>
+    <p id="saveStatus"></p>
+  </section>
+
+  <!-- 📖 Dictionary -->
+  <section id="dictionary">
+    <h2>📖 Dictionary</h2>
+    <p>Find word meanings instantly to improve your vocabulary.</p>
+    <input type="text" id="wordInput" placeholder="Enter a word..." /><br><br>
+    <button id="searchWordBtn">🔍 Search Meaning</button>
+    <div id="wordOutput" style="margin-top: px;"></div>
+  </section>
+
+    <script src="JS/grammarChecker.js"></script>
+
+</body>
+</html>

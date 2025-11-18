@@ -2,79 +2,118 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Crack It</title>
-  <link href="CSS-F/ind.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crack-It</title>
+    <link rel="stylesheet" href="CSS/ind.css">
 </head>
 
 <body>
-  <header>
-    <h1>Crack It</h1>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#courses">Guides</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h2>Crack Every Interview with Confidence</h2>
-    <p>Master resume writing, communication skills, and interview techniques — all in one place.</p>
-    <button onclick="location.href='home.html'">Get Started</button>
-  </section>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <span id="logo">Crack-It</span>
+            <ul>
+                <li><a href="#abt">About Us</a></li>
+                <li><a href="#Con">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section class="features" id="features">
-    <h3>Why Crack It?</h3>
-    <div class="features-grid">
-      <div class="card">
-        <h4>Interview Prep</h4>
-        <p>Practice real-world interview questions and get expert tips.</p>
-      </div>
-      <div class="card">
-        <h4>Resume Building</h4>
-        <p>Craft the perfect resume with professional templates and advice.</p>
-      </div>
-      <div class="card">
-        <h4>Soft Skills Training</h4>
-        <p>Boost your communication, confidence, and presentation skills.</p>
-      </div>
+    <!-- HERO SECTION -->
+    <div class="Div1">
+        <div class="hero-content">
+            <h1>Welcome to Crack-It</h1>
+            <p>Your Career, Skills & Future — All in One Platform</p>
+            <button id="button-1" onclick="window.location.href='login.html'">Get Started</button>
+        </div>
     </div>
-  </section>
 
-  <section class="courses" id="courses">
-    <h3>Top Guides</h3>
-    <div class="courses-grid">
-      <div class="card">
-        <h4>Resume Writing</h4>
-        <p>Learn to create resumes that stand out to recruiters.</p>
-      </div>
-      <div class="card">
-        <h4>Communication Skills</h4>
-        <p>Master verbal and non-verbal communication for interviews.</p>
-      </div>
-      <div class="card">
-        <h4>Mock Interviews</h4>
-        <p>Practice with sample questions and build confidence.</p>
-      </div>
+    <!-- FEATURES SECTION -->
+    <div class="Div1-Features">
+        <h1>Features</h1>
+
+        <div class="features-container">
+
+            <div class="feature-card">
+                <img src="Images/Inter.avif" class="icon">
+                <h3>Mock Interviews</h3>
+                <p>Practice interviews with AI-based feedback to boost your confidence.</p>
+            </div>
+
+            <div class="feature-card">
+                <img src="Images/Resume.jpeg" class="icon">
+                <h3>Resume Builder</h3>
+                <p>Create professional resumes in minutes with ready-made templates.</p>
+            </div>
+
+            <div class="feature-card">
+                <img src="Images/Job2.jpeg" class="icon">
+                <h3>Job & Internship Search</h3>
+                <p>Find jobs and internships tailored to your skills and goals.</p>
+            </div>
+
+            <div class="feature-card">
+                <img src="Images/img2.jpeg" class="icon">
+                <h3>Communication Skills</h3>
+                <p>Improve verbal, written, and non-verbal communication effectively.</p>
+            </div>
+
+            <div class="feature-card">
+                <img src="Images/Car.jpg" class="icon">
+                <h3>Career Guidance</h3>
+                <p>Get the best tips, roadmaps and guidance for your dream career.</p>
+            </div>
+
+            <div class="feature-card">
+                <img src="Images/imgQ.jpg" class="icon">
+                <h3>Interview Questions</h3>
+                <p>Practice important interview questions and boost your preparation.</p>
+            </div>
+
+        </div>
     </div>
-  </section>
 
-  <footer id="contact">
-    <p>&copy; 2025 Crack It</p><br>
+    <!-- FOOTER -->
+    <footer>
 
-    <div id="Contact">
-      <strong>Contact Us</strong><br>
-      Have questions or need assistance? We're here to help!<br>
-      📧 Email: support@crackit.com<br>
-      📞 Phone: +91-XXXXXXXXXX<br>
-      🌐 Website: www.crackit.com
+        <div class="footer-container">
+            
+            <!-- ABOUT US -->
+            <div class="About1" id="abt">
+              
+                <h3>About Us</h3>
+                <p>
+                    Crack-It is a platform designed to help students and professionals 
+                    prepare for interviews, build strong resumes, and improve their 
+                    communication skills. Our mission is to make career preparation 
+                    simple, effective, and accessible to everyone.
+                </p>
+            </div>
 
-      <br><br>
-      Follow us on social media to stay updated on job tips and interview hacks.<br>
-      👍 Facebook | 📷 Instagram | 🐦 Twitter | 💼 LinkedIn
-    </div>
-  </footer>
+            <!-- CONTACT US -->
+            <div class="Contact1" id="Con">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:support@crackit.com">support@crackit.com</a></p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Address: 123 Career Street, Tech City, India</p>
+
+                <div class="social-links">
+                    <a href="#">🌐 Facebook</a> |
+                    <a href="#">🐦 Twitter</a> |
+                    <a href="#">📸 Instagram</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Crack-It. All rights reserved.</p>
+        </div>
+
+    </footer>
+
 </body>
 
 </html>

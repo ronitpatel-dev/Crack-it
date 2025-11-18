@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Questions | Crack It</title>
+  <link rel="stylesheet" href="CSS/demo.css">
+  <link rel="stylesheet" href="CSS/question.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <span id="logo1">Crack-It</span>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="main.html">Main</a></li>
+        <li><a href="index.html">Log-Out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="main">
+    <div id="box1" data-section="intro">Introductory / Icebreaker Questions</div>
+    <div id="box2" data-section="tech">Technical Questions</div>
+    <div id="box3" data-section="problem">Problem-Solving / Analytical Questions</div>
+    <div id="box4" data-section="hr">HR / Personality Questions</div>
+  </div>
+
+  <div class="main-1" id="content-area-1">
+    <h2 class="title">💼 Crack It – Interview Question Types</h2>
+    <img src="Images/imgQ.jpg" alt="Interview">
+    ❓ <strong>Questions</strong>
+    <p>
+      Prepare confidently for every stage of your interview — from introductions to technical and HR rounds.
+      Practice real-world questions with smart sample answers and expert tips.
+      Build clarity, confidence, and communication skills to crack your next interview with ease. 🚀
+    </p>
+  </div>
+
+  <script>
+    // ✅ Fetch logic to load sections dynamically
+    document.querySelectorAll('.main div').forEach(box => {
+      box.addEventListener('click', () => {
+        const sectionId = box.getAttribute('data-section');
+
+        fetch('Questions2.html')
+          .then(res => res.text())
+          .then(data => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, 'text/html');
+            const section = doc.querySelector(`#${sectionId}`);
+            const contentArea = document.getElementById('content-area-1');
+
+            if (section) {
+              contentArea.innerHTML = `
+                <button id="back-btn">⬅ Back</button>
+                <div id="pdfViewer"><p>Select a question PDF to view it here 👇</p></div>
+                ${section.outerHTML}
+              `;
+
+              document.getElementById('back-btn').addEventListener('click', () => {
+                location.reload();
+              });
+            } else {
+              contentArea.innerHTML = "<p>Section not found 😅</p>";
+            }
+          })
+          .catch(() => {
+            document.getElementById('content-area-1').innerHTML = "<p>Error loading section 🚫</p>";
+          });
+      });
+    });
+
+    // ✅ Global PDF viewer function
+    function viewPDF(file) {
+      const viewer = document.getElementById("pdfViewer");
+      if (viewer) {
+        viewer.innerHTML = `<iframe src="${file}" style="width:100%;height:600px;border:none;"></iframe>`;
+      } else {
+        alert("PDF viewer not found 😅");
+      }
+    }
+  </script>
+</body>
+</html>

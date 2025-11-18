@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Job & Internship Search (India)</title>
+  <link href="CSS/job.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <span id="logo1">🚀 Crack-It</span>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="main.html">Main</a></li>
+        <li><a href="index.html">Log-Out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1>Job & Internship Search</h1>
+
+  <div class="main-wrapper">
+
+    <!-- Filters Section -->
+    <div class="filter-wrapper">
+      <h3>Search Filters</h3>
+
+      <!-- Search Input -->
+      <input type="text" id="searchInput" placeholder="e.g. Web Developer" onkeyup="showSuggestions()"/>
+      <div id="suggestions" class="suggestions-box"></div>
+
+      <!-- Category -->
+      <select id="categorySelect">
+        <option value="">All Categories</option>
+        <option value="internship">Internship</option>
+        <option value="remote">Remote</option>
+        <option value="full time">Full Time</option>
+      </select>
+
+      <!-- Location -->
+      <select id="locationSelect">
+        <option value="">All India</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Hyderabad">Hyderabad</option>
+        <option value="Ahmedabad">Ahmedabad</option>
+      </select>
+
+      <!-- Salary Filter -->
+      <div class="salary-filter">
+        <input type="number" id="minSalary" placeholder="Min Salary (₹)">
+        <input type="number" id="maxSalary" placeholder="Max Salary (₹)">
+      </div>
+
+      <!-- Search Button -->
+      <button onclick="searchJobs()">🔍 Search</button>
+    </div>
+
+    <!-- Job Results Section -->
+    <div class="jobs-wrapper">
+      <div id="loader" style="display:none;">
+        <div class="spinner"></div>
+        <p>Fetching jobs, please wait...</p>
+      </div>
+      <div id="results">Enter a keyword and click search.</div>
+    </div>
+
+  </div>
+
+  <script src="JS/job.js"></script>
+
+</body>
+</html>
